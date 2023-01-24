@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: chatgpt-service
+  namespace: chat-gpt
+spec:
+  selector:
+    app: chatgpt
+  ports:
+    - name: http
+      nodePort: 30888
+      port: 5008
+      targetPort: 5008
+  type: NodePort

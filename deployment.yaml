@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chat-gpt-deployment
+  namespace: chat-gpt
+spec:
+  template:
+    metadata:
+      labels:
+        app: chatgpt
+    spec:
+      containers:
+      - name: chatgpt
+        image: flaskgpt
+        imagePullPolicy: IfNotPresent
+        args:
+        - "-h"
+        - "0.0.0.0"
+        - "-p"
+        - "5008"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chatgpt
+
